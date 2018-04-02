@@ -1,0 +1,32 @@
+// Media queries
+//-------------------------------------------
+// Example
+// body {
+//   @include media(mobile) { background: red;}
+// }
+//-------------------------------------------
+
+@mixin media($point) {
+    @if $point == desktop {
+        @media screen and (min-width: 1025px) { @content; }
+    }
+    @if $point == tabletH {
+        @media screen and (max-width: 1024px)  { @content; }
+    }
+    @if $point == tabletV {
+        @media screen and (max-width: 768px)  { @content; }
+    }
+    @else if $point == mobileH {
+        @media screen and (max-width: 568px)  { @content; }
+    }
+    @else if $point == mobileV {
+        @media screen and (max-width: 400px)  { @content; }
+    }
+    @else if $point == noneMobile {
+        @media screen and (min-width: 569px)  { @content; }
+    }
+    @else if $point == aboveTabletV {
+        @media screen and (min-width: 769px)  { @content; }
+    }
+}
+

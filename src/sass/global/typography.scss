@@ -1,0 +1,12 @@
+h1 {
+    font-size: 30px;
+    line-height: 40px;
+    padding: ($spacing * 2);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h2 {
+    margin: 0;
+    padding: ($spacing * 1) (($spacing * 1) + 40px) ($spacing * 1) ($spacing * 1);
+}

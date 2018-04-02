@@ -1,0 +1,468 @@
+html, body {
+	background: #f5f5f5 none no-repeat left top;
+	margin: 0;
+	font: 300 100%/130% "roboto", Arial, Helvetica, Geneva, sans-serif;
+/*	font-weight: 300;*/
+	color: #424242;
+	text-shadow: 1px 1px 0 rgba(0,0,0,.1);
+}
+a {
+	color: inherit;
+	text-decoration: none;
+	font-weight: 400;
+}
+h1, h2 {
+	font: 400 1em/1.2em "Oswald", Arial, Helvetica, Geneva, sans-serif;
+	display: inline-block;
+	width: 100%;
+	margin: 0 0 0.5em 0;
+}
+h1 {
+	text-shadow: 2px 2px 0 rgba(0,0,0,.2);
+}
+h2 {
+	text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+}
+p {
+	font: .3em/1.5em;
+	font-weight: 300;
+	margin: 0 0 1em 0;
+}
+.clear {
+	clear: both;
+}
+.verticalWrapper {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+section.page {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	overflow-x: visible;
+}
+.horizontalWrapper {
+	height: 100%;
+	position: relative; /* Nyt kode jeg tilføjede for at kunne centrere kontaktindhold */
+}
+article.page {
+	height: 100%;
+	float: left;
+}
+.resume .horizontalWrapper {
+	width: 100%;
+}
+.resume article.page {
+	width: 100%;
+}
+.resume article.page {
+/*	background: url(img/000031.jpg) no-repeat left top;*/
+	background: url(img/DSC_3306.jpg) no-repeat 0% 70% / cover;
+/*	background-size: cover;*/
+}
+.resume article.page span {
+	padding: .4em 0;
+	display: inline-block;
+}
+.resume .textbox.right.profileImg {
+	background:  url(img/DSC_3306.jpg) no-repeat 70% 40% / cover;
+/*	background-size: cover;*/
+	display: none;
+}
+
+/*.portfolio .horizontalWrapper {
+	width: 640%;
+}*/
+/*.portfolio article.page {
+	width: 12.5%;
+}*/
+
+
+
+/*.references .horizontalWrapper {
+	width: 320%;
+}*/
+/*.references article.page {
+	width: 25%;
+}*/
+
+.references article.page p {
+	-webkit-column-width: 250px;
+	-moz-column-width: 250px;
+	column-width: 250px;
+	
+	-webkit-column-gap: 2em;
+	-moz-column-gap: 2em;
+	column-gap: 2em;
+}
+
+
+.references article.page.w100 {
+	padding: 6em 4em; /* Compatability */
+	padding: 15vmin 10vmin;
+}
+/*.references article.page.w100.first {
+	padding-left: 6em;
+}*/
+.references article.page.w100:first-of-type {
+	padding-left: 6em; /* Compatability */
+	padding-left: 15vmin;
+}
+/*.references article.page.w100.last {
+	padding-right: 6em;
+}*/
+.references article.page.w100:last-of-type {
+	padding-right: 6em; /* Compatability */
+	padding-right: 15vmin;
+}
+
+
+.textbox {
+	background: #f5f5f5 none no-repeat left top;
+	height: 100%;
+	
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	
+/*	box-shadow: inset 0 0 3em 0 rgba(0, 0, 0, .05);*/ /* Slow on iPad*/
+}
+.textbox.w50 {
+	width: 50%;
+	height: 100%;
+	position: relative;
+}
+.padding {
+	padding: 6em; /* Compatability */
+	padding: 15vmin;
+}
+.contact article.padding {
+	padding: 15vmin 15vmin 15vmin 0;
+}
+.textbox.w50.left {
+	float: left;
+}
+.textbox.w50.right {
+	float: right;
+}
+.textbox.w100 {
+	padding: 10%;
+}
+
+.portfolio article.page {
+/*	position: relative;
+	
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;*/
+}
+.portfolio .projectImage {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+	
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+}
+.projectImage h1 {
+	font: 100 1em/1em Oswald, sans-serif;
+	text-transform: uppercase;
+/*	padding: 1.5em 1.5em .1em 1.5em;*/
+	padding: .1em;
+	
+	color: #f5f5f5;
+
+	position: absolute;
+	bottom: 0;
+	line-height: 1em;
+	white-space: nowrap;
+	
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/*.portfolio1 .projectImage {
+	background-image: url('projects/vietnam.jpg');
+}
+.portfolio2 .projectImage {
+	background-image: url('projects/kickTheCan.jpg');
+}
+.portfolio3 .projectImage {
+	background-image: url('projects/mobyArticle.jpg');
+}
+.portfolio4 .projectImage {
+	background-image: url('projects/mobyPoster.jpg');
+}
+.portfolio5 .projectImage {
+	background-image: url('projects/website1.0.jpg');
+}
+.portfolio6 .projectImage {
+	background-image: url('projects/infographic.jpg');
+}
+.portfolio7 .projectImage {
+	background-image: url('projects/iphoneCamera.jpg');
+}
+.portfolio8 .projectImage {
+	background-image: url('projects/iphoneCamera2.jpg');
+}*/
+
+.first .descriptionContainer {
+	padding-left: 6em;
+}
+.descriptionContainer {
+	background: rgba(0, 0, 0, .8);
+	padding: 4em 4em 4em 4em;
+	
+	height: 50%;
+	
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.last .descriptionContainer {
+	padding-right: 6em;
+}
+.description {
+	font: 300 0.3em/1.5em "Roboto";
+	color: #f5f5f5;
+	text-shadow: none;
+	height: 100%;
+
+	-webkit-column-width: 250px;
+	-moz-column-width: 250px;
+	-ms-column-width: 250px;
+	column-width: 250px;
+	
+	-webkit-column-gap: 2em;
+	-moz-column-gap: 2em;
+	-ms-column-gap: 2em;
+	column-gap: 2em;
+	
+	-webkit-column-fill: auto;
+	-moz-column-fill: auto;
+	-ms-column-fill: auto;
+	column-fill: auto;
+}
+
+
+#splash {
+	font: 300 2em/1.2em "Oswald", Arial, Helvetica, Geneva, sans-serif;
+	background: rgba(0, 0, 0, .8);
+	color: rgba(255, 255, 255, .8);
+	height: 1.4em;
+/*	width: 300px;*/
+	padding: 1em .5em;
+	line-height: 1.2em;
+	text-align: center;
+	margin: auto;
+	top: auto;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	z-index: 10;
+	visibility: visible;
+	cursor: default;
+	
+	text-shadow: 2px 2px 0 rgba(0,0,0, .5);
+}
+.splashSmall {
+	font-size: .6em;
+}
+
+
+
+/* Arrow Links in image description */
+
+.circle {
+	background: rgba(255, 255, 255, .8);
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	float: right;
+}
+.arrowRight {
+	border-top: 12px solid transparent;
+	border-right: 0 solid transparent;
+	border-bottom: 12px solid transparent;
+	border-left: 18px solid rgba(0, 0, 0, .7);
+	height: 0;
+	width: 0;
+	position: relative;
+	top: 9px;
+	left: 14px;
+}
+
+/* Arrow Links in image description - END */
+
+
+
+/* Media Queries */
+
+@media only screen and (max-width: 1024px) {
+	.padding {
+	    padding: 10vmin;
+	}
+	.references article.page.w100 {
+		padding: 10vmin 6vmin;
+	}	.references article.page.w100:first-of-type {
+		padding-left: 10vmin;
+	}
+	.references article.page.w100:last-of-type {
+		padding-right: 10vmin;
+	}
+}
+
+/* iPads (portrait and landscape) ----------- */
+
+@media only screen and (min-width: 961px ) and (max-width: 9999px) and (orientation: landscape) {
+	#splash,
+	section.page.portfolio/*,
+	section.page.references,
+	section.page.contact*/ {
+/*		display: none;*/
+	}
+	section.page {
+		height: auto;
+		min-height: 100%;
+	}
+	section.page.contact {
+		height: 100%;
+	}
+/*	article.page {
+		height: auto;
+		min-height: 100%;
+	}*/
+	.textbox.w50.left,
+	.textbox.w50.right {
+		position: relative;
+		min-height: 100%;
+		min-height: 100vh;
+	}
+	.iOS .textbox.w50.left,
+	.iOS .textbox.w50.right {
+		min-height: 100%;
+	}
+/*	.resume .textbox.w50.left,
+	.resume .textbox.w50.right {
+		height: auto;
+	}*/
+	
+/*	h1 {
+		color: tomato !important;
+	}*/
+}
+
+
+
+@media only screen and (max-width: 960px), (orientation: portrait) {
+	#splash,
+	section.page.portfolio/*,
+	section.page.references,
+	section.page.contact*/ {
+/*		display: none;*/
+	}
+	section.page {
+		height: auto;
+		min-height: 100%;
+	}
+	section.page.contact {
+		height: 100%;
+	}
+/*	article.page {
+		height: auto;
+		min-height: 100%;
+	}*/
+	
+	/* Position picture at top */
+
+	.resume article.page {
+		height: 100%;
+	}
+	
+	.resume .textbox.w50 {
+		width: 100%;
+	}
+	.resume .textbox.w50.left {
+		height: auto;
+/*		margin: 500px 0 0 auto;*/
+	}
+	.resume .textbox.right.profileImg {
+		display: inline;
+		height: 20em;
+		height: 40vh;
+/*		margin: 500px 0 0 auto;*/
+	}
+	.iOS .resume .textbox.w50.right {
+		height: 20em;
+	}
+	.resume article.page {
+		background: none;
+		background-size: cover;
+	}
+	.resume .loadingImageContainer {
+		display: inline;
+		width: 100% !important;
+	}
+	.iOS .textbox.w50.left,
+	.iOS .textbox.w50.right {
+		min-height: 100%;
+	}
+	
+	/* Position picture at top - END */
+/*	h1 {
+		color: gold !important;
+	}*/
+}
+
+/*@media only screen and (max-width: 480px) and (orientation:portrait) {
+	.textbox.w50.right {
+		margin: 200px 0 0 auto;
+	}
+}*/
+
+
+.table {
+	display: table;
+	height: 100%;
+}
+.tableCell {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+
+#contactImgContainer {
+	padding: 30vmin 5vmin;
+	position: absolute;
+	
+	bottom: 0;
+	margin: auto;
+	right: 0;
+	top: 0;
+	height: 40vmin;
+	width: 40vmin;
+}
+.contactImg {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.displayNone {
+	display: none;
+}
+a span {
+	display: none;
+	font-weight: 300;
+}
+a:hover span {
+	display: inline;
+}
