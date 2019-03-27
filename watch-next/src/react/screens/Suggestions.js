@@ -13,6 +13,7 @@ class Suggestions extends React.Component {
     this.state = {
       suggestions: [],
       alreadySuggested: [], // Never suggest an item from this list, it has already been suggested.
+      currentSuggestionIndex: null,
       isLoaded: false
     };
   }
@@ -38,8 +39,8 @@ class Suggestions extends React.Component {
 
   requestAll = () => {
     return Promise.all([
-      this.getByGenre(1),
-      this.getByGenre(2)
+      this.getByGenre(1)
+      // this.getByGenre(2),
       // this.getByGenre(3),
       // this.getByGenre(4),
       // this.getByGenre(5)
@@ -51,14 +52,42 @@ class Suggestions extends React.Component {
     const suggestions = responses.map(response => response.results).flat();
 
     this.setState({
-      suggestions: suggestions,
-      isLoaded: true
+      suggestions
     });
+  };
+
+  chooseSuggestion = () => {
+    const index = Math.floor(Math.random() * this.state.suggestions.length);
+
+    this.setState({
+      currentSuggestionIndex: index
+    });
+  };
+
+  vote = () => {
+    const currentSuggestionIndex = this.state.currentSuggestionIndex;
+    const suggestions = this.state.suggestions;
+    const currentSuggestion = suggestions.splice(currentSuggestionIndex, 1);
+
+    const alreadySuggested = this.state.alreadySuggested;
+    alreadySuggested.push(currentSuggestion);
+
+    this.setState({
+      suggestions,
+      alreadySuggested
+    });
+
+    this.chooseSuggestion();
   };
 
   componentDidMount() {
     this.requestAll().then(responses => {
       this.addResultsToState(responses);
+      this.chooseSuggestion();
+
+      this.setState({
+        isLoaded: true
+      });
     });
   }
 
@@ -79,7 +108,8 @@ class Suggestions extends React.Component {
       "Loading!"
     ) : (
       <Movie
-        movie={suggestions[Math.floor(Math.random() * suggestions.length)]}
+        movie={suggestions[this.state.currentSuggestionIndex]}
+        vote={this.vote}
       />
     );
   }

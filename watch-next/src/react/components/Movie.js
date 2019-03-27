@@ -10,7 +10,6 @@ import Close from "../../images/close.svg";
 // import Rewind from "../../images/rewind.svg";
 
 const Movie = props => {
-  console.log("props", props);
   return (
     <div className="movies">
       <div
@@ -55,7 +54,7 @@ const Movie = props => {
             </div> */}
 
           <MovieInfo {...props.movie} />
-          <MovieOpinion />
+          <MovieOpinion vote={props.vote} />
         </div>
       </div>
     </div>
