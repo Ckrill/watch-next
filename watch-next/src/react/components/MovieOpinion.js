@@ -1,8 +1,8 @@
 import React from "react";
 
 // Images
-import ThumbsDown from "../../images/thumbs-down.svg";
 import ThumbsUp from "../../images/thumbs-up.svg";
+import ThumbsDown from "../../images/thumbs-down.svg";
 import Eye from "../../images/eye.svg";
 
 const MovieOpinion = () => (

@@ -14,3 +14,13 @@ ul li a {
   width: 58px;
   height: 58px;
 }
+
+.movie__new-window {
+  width: 40px;
+  height: 40px;
+}
+
+.rewind {
+  padding: 5px;
+  box-sizing: border-box;
+}

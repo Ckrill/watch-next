@@ -3,7 +3,7 @@ import React from "react";
 // Components
 import MoodListItem from "./MoodListItem";
 
-const MoodList = props => {
+const MoodList = () => {
   const genres = [
     { name: "Animation", id: 16 },
     { name: "Comedy", id: 35 },
