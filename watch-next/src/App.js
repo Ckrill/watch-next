@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // Screens
 import Landing from "./react/screens/Landing";
-import Movie from "./react/screens/Movie";
+import Suggestions from "./react/screens/Suggestions";
 
 // Styling
 import "./App.css";
@@ -16,7 +16,7 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path={"/"} component={Landing} />
-            <Route exact path={"/:genreId"} component={Movie} />
+            <Route exact path={"/:genreId"} component={Suggestions} />
             {/* Not Found */}
             {/* <Route component={NotFound} /> */}
           </Switch>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const MoodListItem = props => (
-  <li data-genre-id="16">
+  <li>
     <Link to={"/" + props.id}>{props.name}</Link>
   </li>
 );
