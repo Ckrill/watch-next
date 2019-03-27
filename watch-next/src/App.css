@@ -9,3 +9,8 @@ ul li a {
 .movies {
   display: block;
 }
+
+.movie-opinion__icon {
+  width: 58px;
+  height: 58px;
+}
