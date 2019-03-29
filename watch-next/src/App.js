@@ -16,7 +16,7 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path={"/"} component={Landing} />
-            <Route exact path={"/:genreId"} component={Suggestions} />
+            <Route exact path={"/:genreSlug"} component={Suggestions} />
 
             {/* Not Found */}
             {/* <Route component={NotFound} /> */}
@@ -29,7 +29,6 @@ class App extends Component {
 
 export default App;
 
-// TODO: Move css to modules.
 // TODO: Add a genre map in settings, so that I can use /:genreName in URL instead of /:genreId
 // TODO: Add 404 page.
 // TODO: Add spinner.

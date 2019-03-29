@@ -7,7 +7,7 @@ import styles from "./GenreList.module.css";
 
 const GenreListItem = props => (
   <li className={styles.item}>
-    <Link className={styles.link} to={"/" + props.id}>
+    <Link className={styles.link} to={"/" + props.slug}>
       <img className={styles.icon} src={props.icon} alt="" />
       <span className={styles.text}>{props.name}</span>
     </Link>
