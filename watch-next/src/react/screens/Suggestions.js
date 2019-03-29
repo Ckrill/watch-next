@@ -8,7 +8,11 @@ import genreMap from "../../maps/genreMap";
 
 // Components
 import Spinner from "../components/Spinner/Spinner";
+import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 import Movie from "../components/Movie/Movie";
+
+// Helpers
+import handleErrors from "../../helpers/handleErrors";
 
 class Suggestions extends React.Component {
   constructor(props) {
@@ -18,7 +22,8 @@ class Suggestions extends React.Component {
       suggestions: [],
       alreadySuggested: [], // Never suggest an item from this list, it has already been suggested.
       currentSuggestionIndex: null,
-      isLoaded: false
+      isLoaded: false,
+      error: null
     };
   }
 
@@ -38,7 +43,7 @@ class Suggestions extends React.Component {
       settings.key
     }&page=${page}${genre}${query}`;
 
-    const promise = fetch(url).then(res => res.json());
+    const promise = fetch(url).then(handleErrors);
     return promise;
   };
 
@@ -86,14 +91,21 @@ class Suggestions extends React.Component {
   };
 
   componentDidMount() {
-    this.requestAll().then(responses => {
-      this.addResultsToState(responses);
-      this.chooseSuggestion();
+    this.requestAll()
+      .then(responses => {
+        this.addResultsToState(responses);
+        this.chooseSuggestion();
 
-      this.setState({
-        isLoaded: true
+        this.setState({
+          isLoaded: true
+        });
+      })
+      .catch(error => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
       });
-    });
   }
 
   render() {
@@ -101,12 +113,10 @@ class Suggestions extends React.Component {
     const suggestions = this.state.suggestions;
 
     return error ? (
-      // TODO:
-      // <Error
-      //   errorMessage={error.message}
-      //   errorMessageFun="A tasting? Today? Hmm... Are you sure?"
-      // />
-      "Error!"
+      <ErrorMessage
+        message="When is this movie from again?"
+        details={error.message}
+      />
     ) : !isLoaded ? (
       <Spinner message="Getting movies from the archive..." />
     ) : (
