@@ -12,11 +12,6 @@ body {
   font-weight: 300;
 }
 
-:root {
-  /* --spacing: 20px; */
-  --max-size: 800px;
-}
-
 .wrapper {
   /* padding: var(--spacing); */
   min-height: 100vh;

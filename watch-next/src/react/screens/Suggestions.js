@@ -7,6 +7,7 @@ import settings from "../../settings/settings";
 import genreMap from "../../maps/genreMap";
 
 // Components
+import Spinner from "../components/Spinner/Spinner";
 import Movie from "../components/Movie/Movie";
 
 class Suggestions extends React.Component {
@@ -107,9 +108,7 @@ class Suggestions extends React.Component {
       // />
       "Error!"
     ) : !isLoaded ? (
-      // TODO:
-      // <Spinner loadingMessage="Getting bottles from the basement..." />
-      "Loading!"
+      <Spinner message="Getting movies from the archive..." />
     ) : (
       <div className="suggestions">
         <Movie

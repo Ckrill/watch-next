@@ -29,16 +29,16 @@ class App extends Component {
 
 export default App;
 
-// TODO: Add a genre map in settings, so that I can use /:genreName in URL instead of /:genreId
 // TODO: Add 404 page.
-// TODO: Add spinner.
+// TODO: Add error component.
+// TODO: Make it a web app (app icon, load screen, no address bar).
+// TODO: Make transitions between screens and between movies
 // TODO: Sometimes a movies is shown twice. It should not be.
 // TODO: Hvis man liker en film som allerede findes i session.similarMovies, skal den fjernes fra session.similarMovies
 // TODO: Make sure that if session.similarMovies run out of movies, the app will go back to getting popular movies, or should it go back to showing high rated movies?
-// TODO: Make it a web app (app icon, load screen, no address bar).
 
 // FUTURE: Save data to local storage
-// TODO: Ny genre: "Broarden my horizon" - Film som man ikke normalt ser
+// FUTURE: Ny genre: "Broarden my horizon" - Film som man ikke normalt ser
 // FUTURE: Swipe right to like, left to dislike, up to unsee, down to unsee (or down to add to watch list)
 // FUTURE: Make the app load X (5) movies ahead, so that it has time to load the picture, before it has to be shown.
 // FUTURE: Optimere anbefalings algoritme: Tag top X (10)% og abefal en film fra disse.
