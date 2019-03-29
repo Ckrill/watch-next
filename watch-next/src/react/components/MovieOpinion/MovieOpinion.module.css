@@ -1,0 +1,24 @@
+.movieOpinion {
+  display: flex;
+}
+
+.button {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+}
+
+.button:active .icon {
+  transform: scale(1.1);
+  transition: transform 0.1s;
+}
+
+.icon {
+  display: block;
+  height: 58px;
+  width: 58px;
+  transition: transform 0.2s;
+}

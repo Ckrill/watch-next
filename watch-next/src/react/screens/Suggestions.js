@@ -4,7 +4,7 @@ import React from "react";
 import settings from "../../settings/settings";
 
 // Components
-import Movie from "../components/Movie";
+import Movie from "../components/Movie/Movie";
 
 class Suggestions extends React.Component {
   constructor(props) {
@@ -107,10 +107,12 @@ class Suggestions extends React.Component {
       // <Spinner loadingMessage="Getting bottles from the basement..." />
       "Loading!"
     ) : (
-      <Movie
-        movie={suggestions[this.state.currentSuggestionIndex]}
-        vote={this.vote}
-      />
+      <div className="suggestions">
+        <Movie
+          movie={suggestions[this.state.currentSuggestionIndex]}
+          vote={this.vote}
+        />
+      </div>
     );
   }
 }

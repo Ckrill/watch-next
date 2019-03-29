@@ -1,12 +1,13 @@
 import React from "react";
 
 // Compoments
-import MoodList from "../components/MoodList";
+import GenreList from "../components/GenreList/GenreList";
+import Title from "../components/Title/Title";
 
 const Landing = props => (
   <div className="genre">
-    <h1>What are you in the mood for?</h1>
-    <MoodList />
+    <Title />
+    <GenreList />
   </div>
 );
 

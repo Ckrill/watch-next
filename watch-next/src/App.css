@@ -1,26 +1,42 @@
-@import "from-old-site.css";
+/* @import "from-old-site.css"; */
+@import "styles/styles.css";
 
-ul li a {
-  color: white;
-  text-decoration: none;
+html {
+  margin: 0;
+  background-color: #111315;
+  color: #ecf0f1;
 }
 
-.genre,
-.movies {
-  display: block;
+body {
+  font-family: "Roboto";
+  font-weight: 300;
 }
 
-.movie-opinion__icon {
-  width: 58px;
-  height: 58px;
+:root {
+  /* --spacing: 20px; */
+  --max-size: 800px;
 }
 
-.movie__new-window {
-  width: 40px;
-  height: 40px;
+.wrapper {
+  /* padding: var(--spacing); */
+  min-height: 100vh;
+  position: relative;
 }
 
-.rewind {
-  padding: 5px;
-  box-sizing: border-box;
+.genre {
+  background: linear-gradient(45deg, #9b59b6 0%, #e67e22 100%), #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.suggestions {
+  height: 100vh;
+  position: relative;
+  width: 100%;
+  max-width: var(--max-size);
+  margin-right: auto;
+  margin-left: auto;
 }

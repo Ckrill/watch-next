@@ -1,0 +1,45 @@
+.movie {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.poster {
+  display: block;
+  height: 1%;
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.addToList {
+  position: absolute;
+  padding: 5px;
+  box-sizing: border-box;
+
+  top: -50px;
+  right: 10px;
+  cursor: pointer;
+  background-color: #27ae60;
+  position: block;
+  height: 40px;
+  width: 40px;
+  border-radius: 3px;
+}
+
+.rewind {
+  position: absolute;
+  padding: 5px;
+  box-sizing: border-box;
+
+  top: -50px;
+  left: 10px;
+  cursor: pointer;
+  background-color: #ecf0f1;
+  position: block;
+  height: 40px;
+  width: 40px;
+  border-radius: 3px;
+}
