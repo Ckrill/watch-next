@@ -30,6 +30,13 @@ class Suggestions extends React.Component {
   getByGenre = page => {
     const genreSlug = this.props.match.params.genreSlug;
     const genreObject = genreMap.find(genre => genre.slug === genreSlug);
+    if (!genreObject) {
+      this.setState({
+        isLoaded: true,
+        error: { message: `Genre "${genreSlug}", could not be found.` }
+      });
+      return false;
+    }
     const mode = "discover/movie?",
       // query = "&with_genres=18&primary_release_year=2014",
       // query = "&primary_release_year=2010&sort_by=vote_average.desc&vote_count.gte=50", // Best average with over 50 ratings
