@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "name": "watch-next",
+  "builds": [{ "src": "package.json", "use": "@now/static-build" }]
+}

@@ -30,7 +30,6 @@ class App extends Component {
 
 export default App;
 
-// TODO: Add 404 page.
 // TODO: Make it a web app (app icon, load screen, no address bar).
 // TODO: Make transitions between screens and between movies
 // TODO: Sometimes a movies is shown twice. It should not be.
