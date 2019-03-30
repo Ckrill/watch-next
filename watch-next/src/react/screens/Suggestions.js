@@ -1,4 +1,5 @@
 import React from "react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 // Settings
 import settings from "../../settings/settings";
@@ -10,9 +11,14 @@ import genreMap from "../../maps/genreMap";
 import Spinner from "../components/Spinner/Spinner";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 import Movie from "../components/Movie/Movie";
+import Button from "../components/Button/Button";
+import MovieOpinion from "../components/MovieOpinion/MovieOpinion";
 
 // Helpers
 import handleErrors from "../../helpers/handleErrors";
+
+// Images
+import Cross from "../../images/close.svg";
 
 class Suggestions extends React.Component {
   constructor(props) {
@@ -128,6 +134,7 @@ class Suggestions extends React.Component {
   render() {
     const { error, isLoaded } = this.state;
     const suggestions = this.state.suggestions;
+    const movie = suggestions[this.state.currentSuggestionIndex];
 
     return error ? (
       <ErrorMessage
@@ -138,10 +145,17 @@ class Suggestions extends React.Component {
       <Spinner message="Getting movies from the archive..." />
     ) : (
       <div className="suggestions">
-        <Movie
-          movie={suggestions[this.state.currentSuggestionIndex]}
-          vote={this.vote}
-        />
+        <Button icon={Cross} url={"/"} />
+        <TransitionGroup className="movies">
+          <CSSTransition
+            classNames="movie-transition"
+            key={movie.id}
+            timeout={{ enter: 500, exit: 500 }}
+          >
+            <Movie movie={movie} vote={this.vote} />
+          </CSSTransition>
+        </TransitionGroup>
+        <MovieOpinion vote={this.vote} />
       </div>
     );
   }

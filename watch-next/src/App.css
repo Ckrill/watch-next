@@ -19,7 +19,12 @@ body {
 }
 
 .genre {
-  background: linear-gradient(45deg, #9b59b6 0%, #e67e22 100%), #fff;
+  background: linear-gradient(
+      45deg,
+      var(--secondary-color) 0%,
+      var(--primary-color) 100%
+    ),
+    #fff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,4 +39,43 @@ body {
   max-width: var(--max-size);
   margin-right: auto;
   margin-left: auto;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.movies {
+  height: 0;
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  position: relative;
+}
+
+/* TEMP */
+
+/* .movies-enter {
+  transform: translateY(100%);
+  transition: 2s;
+}
+.movies-enter-active {
+  transform: translateY(0%);
+} */
+
+.movie-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.5s ease-in, opacity 0.2s 0.1s ease-in;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.movie-transition-exit-active {
+  opacity: 0;
+  transform: translate3D(120%, -70%, 0) rotate(90deg);
+  transform-origin: 130% 30%;
 }
