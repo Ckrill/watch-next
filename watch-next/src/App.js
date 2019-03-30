@@ -30,8 +30,8 @@ class App extends Component {
 
 export default App;
 
+// TODO: Clean up App.css
 // TODO: Clean up Suggestions.js, it is too long and messy
-// TODO: Make transitions between screens and between movies
 // TODO: Sometimes a movies is shown twice. It should not be.
 // TODO: Hvis man liker en film som allerede findes i session.similarMovies, skal den fjernes fra session.similarMovies
 // TODO: Make sure that if session.similarMovies run out of movies, the app will go back to getting popular movies, or should it go back to showing high rated movies?

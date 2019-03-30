@@ -1,5 +1,4 @@
 import React from "react";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 // Settings
 import settings from "../../settings/settings";
@@ -10,8 +9,8 @@ import genreMap from "../../maps/genreMap";
 // Components
 import Spinner from "../components/Spinner/Spinner";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
-import Movie from "../components/Movie/Movie";
 import Button from "../components/Button/Button";
+import MovieList from "../components/MovieList/MovieList";
 import MovieOpinion from "../components/MovieOpinion/MovieOpinion";
 
 // Helpers
@@ -19,6 +18,7 @@ import handleErrors from "../../helpers/handleErrors";
 
 // Images
 import Cross from "../../images/close.svg";
+import FadeIn from "../components/FadeIn/FadeIn";
 
 class Suggestions extends React.Component {
   constructor(props) {
@@ -144,19 +144,13 @@ class Suggestions extends React.Component {
     ) : !isLoaded ? (
       <Spinner message="Getting movies from the archive..." />
     ) : (
-      <div className="suggestions">
-        <Button icon={Cross} url={"/"} />
-        <TransitionGroup className="movies">
-          <CSSTransition
-            classNames="movie-transition"
-            key={movie.id}
-            timeout={{ enter: 500, exit: 500 }}
-          >
-            <Movie movie={movie} vote={this.vote} />
-          </CSSTransition>
-        </TransitionGroup>
-        <MovieOpinion vote={this.vote} />
-      </div>
+      <FadeIn>
+        <div className="suggestions">
+          <Button icon={Cross} url={"/"} />
+          <MovieList movie={movie} />
+          <MovieOpinion vote={this.vote} />
+        </div>
+      </FadeIn>
     );
   }
 }

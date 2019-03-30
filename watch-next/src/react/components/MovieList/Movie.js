@@ -4,7 +4,7 @@ import React from "react";
 import MoviePanel from "../MoviePanel/MoviePanel";
 
 // Styling
-import styles from "./Movie.module.css";
+import styles from "./MovieList.module.css";
 
 // Images
 // import AddToList from "../../../images/addToList.svg";
