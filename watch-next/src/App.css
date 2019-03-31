@@ -13,7 +13,6 @@ body {
 }
 
 .wrapper {
-  /* padding: var(--spacing); */
   min-height: 100vh;
   position: relative;
 }

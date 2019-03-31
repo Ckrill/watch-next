@@ -12,7 +12,7 @@ import styles from "./MovieOpinion.module.css";
 const VoteButton = props => (
   <div
     className={styles.button}
-    onClick={() => props.vote()}
+    onClick={() => props.vote(props.opinion)}
     style={{ background: props.background }}
   >
     <img className={styles.icon} src={props.icon} alt="" />
@@ -23,18 +23,21 @@ const MovieOpinion = props => (
   <div className={styles.movieOpinion}>
     <VoteButton
       icon={ThumbsDown}
-      vote={props.vote}
       background={"linear-gradient(45deg, #e74c3c 0%, #e67e22 100%)"}
+      opinion={"negative"}
+      vote={props.vote}
     />
     <VoteButton
       icon={Eye}
-      vote={props.vote}
       background={"linear-gradient(45deg, #34495e 0%, #7f8c8d 100%)"}
+      opinion={"neutral"}
+      vote={props.vote}
     />
     <VoteButton
       icon={ThumbsUp}
-      vote={props.vote}
       background={"linear-gradient(45deg, #27ae60 0%, #1abc9c 100%)"}
+      opinion={"positive"}
+      vote={props.vote}
     />
   </div>
 );

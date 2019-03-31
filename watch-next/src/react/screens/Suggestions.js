@@ -27,6 +27,7 @@ class Suggestions extends React.Component {
     this.state = {
       suggestions: [],
       alreadySuggested: [], // Never suggest an item from this list, it has already been suggested.
+      currentSuggestion: {},
       currentSuggestionIndex: null,
       isLoaded: false,
       error: null
@@ -92,25 +93,40 @@ class Suggestions extends React.Component {
 
     const index = Math.floor(Math.random() * this.state.suggestions.length);
 
+    const suggestions = this.state.suggestions;
+    const currentSuggestion = suggestions.splice(index, 1)[0];
+
     this.setState({
-      currentSuggestionIndex: index
+      // currentSuggestionIndex: index
+      suggestions,
+      currentSuggestion
     });
   };
 
-  vote = () => {
-    const currentSuggestionIndex = this.state.currentSuggestionIndex;
-    const suggestions = this.state.suggestions;
-    const currentSuggestion = suggestions.splice(currentSuggestionIndex, 1);
+  vote = opinion => {
+    const currentSuggestion = this.state.currentSuggestion;
+
+    if (currentSuggestion.opinion) {
+      // Prevent the user from vote more than once
+      return false;
+    }
+
+    currentSuggestion.opinion = opinion;
+    // Skal jeg opdatere state med currentSuggestion? Eller er det tids nok at state bliver opdateret nedenunder?
+    this.setState({
+      currentSuggestion
+    });
 
     const alreadySuggested = this.state.alreadySuggested;
     alreadySuggested.push(currentSuggestion);
 
+    // This block triggers 2 updates of the state, therefore Movie is painted twice
     this.setState({
-      suggestions,
       alreadySuggested
     });
 
     this.chooseSuggestion();
+    // This block triggers 2 updates of the state, therefore Movie is painted twice - END
   };
 
   componentDidMount() {
@@ -132,9 +148,7 @@ class Suggestions extends React.Component {
   }
 
   render() {
-    const { error, isLoaded } = this.state;
-    const suggestions = this.state.suggestions;
-    const movie = suggestions[this.state.currentSuggestionIndex];
+    const { error, isLoaded, currentSuggestion } = this.state;
 
     return error ? (
       <ErrorMessage
@@ -147,7 +161,7 @@ class Suggestions extends React.Component {
       <FadeIn>
         <div className="suggestions">
           <Button icon={Cross} url={"/"} />
-          <MovieList movie={movie} />
+          <MovieList movie={currentSuggestion} />
           <MovieOpinion vote={this.vote} />
         </div>
       </FadeIn>

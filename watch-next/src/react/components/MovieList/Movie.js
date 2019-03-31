@@ -12,7 +12,7 @@ import styles from "./MovieList.module.css";
 
 const Movie = props => {
   return (
-    <div className={styles.movie}>
+    <div className={styles.movie} data-opinion={String(props.movie.opinion)}>
       <img
         className={styles.poster}
         src={`https://image.tmdb.org/t/p/w500/${props.movie.poster_path}`}
