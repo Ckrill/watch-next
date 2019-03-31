@@ -20,8 +20,10 @@ const MovieList = props => {
       >
         <Movie
           movie={props.movie}
-          rewind={props.rewind}
+          posterView={props.posterView}
+          togglePoster={props.togglePoster}
           rewindable={props.rewindable}
+          rewind={props.rewind}
         />
       </CSSTransition>
     </TransitionGroup>

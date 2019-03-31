@@ -32,8 +32,6 @@ export default App;
 
 // TODO: Clean up App.css.
 // TODO: Clean up Suggestions.js, it is too long and messy.
-// TODO: Add revert button, to change vote on a movie
-// TODO: When poster image is tapped and hold, show image in full size (Maybe just hide the panel and the close button?).
 
 // TODO: Sometimes a movies is shown twice. It should not be.
 // TODO: Hvis man liker en film som allerede findes i session.similarMovies, skal den fjernes fra session.similarMovies.

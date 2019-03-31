@@ -25,6 +25,10 @@
   flex-grow: 1;
 }
 
+.poster[data-poster-view="true"] {
+  object-fit: contain;
+}
+
 .movieTransitionExit {
   opacity: 1;
   transform: translateY(0);

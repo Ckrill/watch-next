@@ -13,13 +13,17 @@ const Movie = props => {
         className={styles.poster}
         src={`https://image.tmdb.org/t/p/w500/${props.movie.poster_path}`}
         alt=""
+        data-poster-view={String(props.posterView)}
+        onClick={props.togglePoster}
       />
 
-      <MoviePanel
-        {...props.movie}
-        rewind={props.rewind}
-        rewindable={props.rewindable}
-      />
+      {!props.posterView && (
+        <MoviePanel
+          {...props.movie}
+          rewindable={props.rewindable}
+          rewind={props.rewind}
+        />
+      )}
     </div>
   );
 };

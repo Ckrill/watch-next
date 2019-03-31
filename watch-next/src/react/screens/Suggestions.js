@@ -25,11 +25,12 @@ class Suggestions extends React.Component {
     super(props);
 
     this.state = {
+      isLoaded: false,
+      error: null,
       suggestions: [],
       alreadySuggested: [], // Never suggest an item from this list, it has already been suggested.
       currentSuggestion: null,
-      isLoaded: false,
-      error: null
+      posterView: false
     };
   }
 
@@ -161,6 +162,12 @@ class Suggestions extends React.Component {
     });
   };
 
+  togglePoster = () => {
+    this.setState({
+      posterView: !this.state.posterView
+    });
+  };
+
   componentDidMount() {
     this.requestAll()
       .then(responses => {
@@ -180,7 +187,13 @@ class Suggestions extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, currentSuggestion, alreadySuggested } = this.state;
+    const {
+      error,
+      isLoaded,
+      currentSuggestion,
+      alreadySuggested,
+      posterView
+    } = this.state;
 
     return error ? (
       <ErrorMessage
@@ -192,13 +205,15 @@ class Suggestions extends React.Component {
     ) : (
       <FadeIn>
         <div className="suggestions">
-          <Button icon={Cross} url={"/"} />
+          {!posterView && <Button icon={Cross} url={"/"} />}
           <MovieList
             movie={currentSuggestion}
-            rewind={this.rewind}
+            posterView={posterView}
+            togglePoster={this.togglePoster}
             rewindable={alreadySuggested.length > 0}
+            rewind={this.rewind}
           />
-          <MovieOpinion vote={this.vote} />
+          {!posterView && <MovieOpinion vote={this.vote} />}
         </div>
       </FadeIn>
     );
