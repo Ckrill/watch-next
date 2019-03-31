@@ -6,6 +6,8 @@ import styles from "./MoviePanel.module.css";
 
 // Images
 import Imdb from "../../../images/imdb.svg";
+// import AddToList from "../../../images/addToList.svg";
+import Rewind from "../../../images/rewind.svg";
 
 const MoviePanel = props => {
   const title = props.title;
@@ -14,6 +16,19 @@ const MoviePanel = props => {
 
   return (
     <div className={styles.container}>
+      {/* <div className={styles.info}> */}
+      {/* Add to watch list */}
+      {/* <div className={styles.addToList}>
+          <img src={AddToList} alt="" />
+        </div> */}
+
+      {/* Go back to previous movie */}
+      {props.rewindable && (
+        <div className={styles.rewind} onClick={() => props.rewind()}>
+          <img src={Rewind} alt="" />
+        </div>
+      )}
+
       {/* Movie title and release year */}
       <h2 className={styles.title}>
         {title}

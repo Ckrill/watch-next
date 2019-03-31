@@ -18,7 +18,11 @@ const MovieList = props => {
         key={props.movie.id}
         timeout={500}
       >
-        <Movie movie={props.movie} />
+        <Movie
+          movie={props.movie}
+          rewind={props.rewind}
+          rewindable={props.rewindable}
+        />
       </CSSTransition>
     </TransitionGroup>
   );

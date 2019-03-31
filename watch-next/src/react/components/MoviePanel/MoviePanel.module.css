@@ -4,6 +4,36 @@
   position: relative;
 }
 
+.addToList {
+  position: absolute;
+  padding: 5px;
+  box-sizing: border-box;
+
+  top: -50px;
+  right: 10px;
+  cursor: pointer;
+  background-color: #27ae60;
+  position: block;
+  height: 40px;
+  width: 40px;
+  border-radius: 3px;
+}
+
+.rewind {
+  position: absolute;
+  padding: 5px;
+  box-sizing: border-box;
+
+  top: -50px;
+  left: 10px;
+  cursor: pointer;
+  background-color: #f1c40f;
+  position: block;
+  height: 40px;
+  width: 40px;
+  border-radius: 3px;
+}
+
 .title {
   font-family: "Roboto Slab";
   font-weight: 700;

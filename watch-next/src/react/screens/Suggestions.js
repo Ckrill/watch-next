@@ -27,8 +27,7 @@ class Suggestions extends React.Component {
     this.state = {
       suggestions: [],
       alreadySuggested: [], // Never suggest an item from this list, it has already been suggested.
-      currentSuggestion: {},
-      currentSuggestionIndex: null,
+      currentSuggestion: null,
       isLoaded: false,
       error: null
     };
@@ -64,11 +63,11 @@ class Suggestions extends React.Component {
 
   requestAll = () => {
     return Promise.all([
-      this.getByGenre(1)
-      // this.getByGenre(2),
-      // this.getByGenre(3),
-      // this.getByGenre(4),
-      // this.getByGenre(5)
+      this.getByGenre(1),
+      this.getByGenre(2),
+      this.getByGenre(3),
+      this.getByGenre(4),
+      this.getByGenre(5)
     ]);
   };
 
@@ -93,11 +92,15 @@ class Suggestions extends React.Component {
 
     const index = Math.floor(Math.random() * this.state.suggestions.length);
 
+    // const previousSuggestion = this.state.currentSuggestion;
+    // this.setState({
+    //   rewindMemory: previousSuggestion
+    // });
+
     const suggestions = this.state.suggestions;
     const currentSuggestion = suggestions.splice(index, 1)[0];
 
     this.setState({
-      // currentSuggestionIndex: index
       suggestions,
       currentSuggestion
     });
@@ -129,6 +132,35 @@ class Suggestions extends React.Component {
     // This block triggers 2 updates of the state, therefore Movie is painted twice - END
   };
 
+  rewind = () => {
+    const suggestions = this.state.suggestions;
+    const currentSuggestion = this.state.currentSuggestion;
+    const alreadySuggested = this.state.alreadySuggested;
+
+    if (!alreadySuggested.length > 0) {
+      return false;
+    }
+
+    const previousSuggestion = alreadySuggested.splice(
+      [alreadySuggested.length - 1],
+      1
+    )[0];
+
+    // Add current suggestion back to suggestions
+    suggestions.push(currentSuggestion);
+
+    // Remove previous opinion from suggestion
+    delete previousSuggestion.opinion;
+
+    // Move suggestion from rewindMemory to currentSuggestion
+    // Update suggestions and alreadySuggested
+    this.setState({
+      currentSuggestion: previousSuggestion,
+      suggestions: suggestions,
+      alreadySuggested: alreadySuggested
+    });
+  };
+
   componentDidMount() {
     this.requestAll()
       .then(responses => {
@@ -148,7 +180,7 @@ class Suggestions extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, currentSuggestion } = this.state;
+    const { error, isLoaded, currentSuggestion, alreadySuggested } = this.state;
 
     return error ? (
       <ErrorMessage
@@ -161,7 +193,11 @@ class Suggestions extends React.Component {
       <FadeIn>
         <div className="suggestions">
           <Button icon={Cross} url={"/"} />
-          <MovieList movie={currentSuggestion} />
+          <MovieList
+            movie={currentSuggestion}
+            rewind={this.rewind}
+            rewindable={alreadySuggested.length > 0}
+          />
           <MovieOpinion vote={this.vote} />
         </div>
       </FadeIn>
