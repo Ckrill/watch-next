@@ -32,6 +32,7 @@ export default App;
 
 // TODO: Clean up App.css.
 // TODO: Clean up Suggestions.js, it is too long and messy.
+// TODO: Animate the first page in, in a nice way
 
 // TODO: Sometimes a movies is shown twice. It should not be.
 // TODO: Hvis man liker en film som allerede findes i session.similarMovies, skal den fjernes fra session.similarMovies.
