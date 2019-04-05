@@ -13,24 +13,21 @@ import "./App.css";
 class App extends Component {
   render() {
     return (
-      <div className="wrapper">
-        <BrowserRouter>
-          <Switch>
-            <Route exact path={"/"} component={Landing} />
-            <Route exact path={"/mood/:genreSlug"} component={Suggestions} />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path={"/"} component={Landing} />
+          <Route exact path={"/mood/:genreSlug"} component={Suggestions} />
 
-            {/* Not Found */}
-            <Route component={NotFound} />
-          </Switch>
-        </BrowserRouter>
-      </div>
+          {/* Not Found */}
+          <Route component={NotFound} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
 
 export default App;
 
-// TODO: Clean up App.css.
 // TODO: Clean up Suggestions.js, it is too long and messy.
 // TODO: Animate the first page in, in a nice way
 

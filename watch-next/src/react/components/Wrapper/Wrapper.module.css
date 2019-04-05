@@ -1,0 +1,26 @@
+.wrapper {
+  background: linear-gradient(
+      45deg,
+      var(--secondary-color) 0%,
+      var(--primary-color) 100%
+    ),
+    #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.singlePage {
+  height: 100vh;
+  position: relative;
+  width: 100%;
+  max-width: var(--max-size);
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}

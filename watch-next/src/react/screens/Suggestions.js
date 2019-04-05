@@ -9,6 +9,7 @@ import genreMap from "../../maps/genreMap";
 // Components
 import Spinner from "../components/Spinner/Spinner";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
+import Wrapper from "../components/Wrapper/Wrapper";
 import Button from "../components/Button/Button";
 import MovieList from "../components/MovieList/MovieList";
 import MovieOpinion from "../components/MovieOpinion/MovieOpinion";
@@ -204,7 +205,7 @@ class Suggestions extends React.Component {
       <Spinner message="Getting movies from the archive..." />
     ) : (
       <FadeIn>
-        <div className="suggestions">
+        <Wrapper singlePage={true}>
           {!posterView && <Button icon={Cross} url={"/"} />}
           <MovieList
             movie={currentSuggestion}
@@ -214,7 +215,7 @@ class Suggestions extends React.Component {
             rewind={this.rewind}
           />
           {!posterView && <MovieOpinion vote={this.vote} />}
-        </div>
+        </Wrapper>
       </FadeIn>
     );
   }
