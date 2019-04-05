@@ -28,8 +28,8 @@ class App extends Component {
 
 export default App;
 
-// TODO: Clean up Suggestions.js, it is too long and messy.
 // TODO: Animate the first page in, in a nice way
+// TODO: What should happen after the suggestions list is empty?
 
 // TODO: Sometimes a movies is shown twice. It should not be.
 // TODO: Hvis man liker en film som allerede findes i session.similarMovies, skal den fjernes fra session.similarMovies.

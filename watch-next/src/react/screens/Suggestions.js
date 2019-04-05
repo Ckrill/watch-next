@@ -1,11 +1,5 @@
 import React from "react";
 
-// Settings
-import settings from "../../settings/settings";
-
-// Maps
-import genreMap from "../../maps/genreMap";
-
 // Components
 import Spinner from "../components/Spinner/Spinner";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
@@ -15,7 +9,12 @@ import MovieList from "../components/MovieList/MovieList";
 import MovieOpinion from "../components/MovieOpinion/MovieOpinion";
 
 // Helpers
-import handleErrors from "../../helpers/handleErrors";
+import {
+  findSuggestion,
+  voteHelper,
+  rewindHelper
+} from "../../helpers/suggestions";
+import { requestByGenre } from "../../helpers/requests";
 
 // Images
 import Cross from "../../images/close.svg";
@@ -35,42 +34,17 @@ class Suggestions extends React.Component {
     };
   }
 
-  getByGenre = page => {
+  requestMovies = numberOfMovies => {
+    const moviesPerRequest = 20;
+    const numberOfRequests = numberOfMovies / moviesPerRequest;
     const genreSlug = this.props.match.params.genreSlug;
-    const genreObject = genreMap.find(genre => genre.slug === genreSlug);
-    if (!genreObject) {
-      this.setState({
-        isLoaded: true,
-        error: { message: `Genre "${genreSlug}", could not be found.` }
-      });
-      return false;
+    let requestList = [];
+
+    for (let i = 0; i < numberOfRequests; i++) {
+      requestList.push(requestByGenre(i + 1, genreSlug));
     }
 
-    const mode = "discover/movie?",
-      // query = "&with_genres=18&primary_release_year=2014",
-      // query = "&primary_release_year=2010&sort_by=vote_average.desc&vote_count.gte=50", // Best average with over 50 ratings
-      genre = "&with_genres=" + genreObject.id,
-      quality = "&vote_average.gte=7", // Rating greater than
-      quantity = "&vote_count.gte=50", // Votes greater than
-      popularity = "&sort_by=popularity.desc", // Most popular
-      query = quality + quantity + popularity;
-
-    const url = `${settings.endpoint}${mode}&${
-      settings.key
-    }&page=${page}${genre}${query}`;
-
-    const promise = fetch(url).then(handleErrors);
-    return promise;
-  };
-
-  requestAll = () => {
-    return Promise.all([
-      this.getByGenre(1),
-      this.getByGenre(2),
-      this.getByGenre(3),
-      this.getByGenre(4),
-      this.getByGenre(5)
-    ]);
+    return Promise.all(requestList);
   };
 
   addResultsToState = responses => {
@@ -82,84 +56,29 @@ class Suggestions extends React.Component {
     });
   };
 
-  chooseSuggestion = () => {
-    if (!this.state.suggestions.length) {
-      this.setState({
-        isLoaded: true,
-        error: { message: `What the hell! You have seen all the movies.` }
-      });
-
-      return false;
-    }
-
-    const index = Math.floor(Math.random() * this.state.suggestions.length);
-
-    // const previousSuggestion = this.state.currentSuggestion;
-    // this.setState({
-    //   rewindMemory: previousSuggestion
-    // });
-
-    const suggestions = this.state.suggestions;
-    const currentSuggestion = suggestions.splice(index, 1)[0];
-
-    this.setState({
-      suggestions,
-      currentSuggestion
-    });
-  };
-
   vote = opinion => {
-    const currentSuggestion = this.state.currentSuggestion;
+    let { alreadySuggested, currentSuggestion } = this.state;
+    alreadySuggested = voteHelper(alreadySuggested, currentSuggestion, opinion);
+    const foundSuggestion = findSuggestion(this.state.suggestions);
 
-    if (currentSuggestion.opinion) {
-      // Prevent the user from vote more than once
-      return false;
-    }
-
-    currentSuggestion.opinion = opinion;
-    // Skal jeg opdatere state med currentSuggestion? Eller er det tids nok at state bliver opdateret nedenunder?
     this.setState({
-      currentSuggestion
+      alreadySuggested,
+      ...foundSuggestion
     });
-
-    const alreadySuggested = this.state.alreadySuggested;
-    alreadySuggested.push(currentSuggestion);
-
-    // This block triggers 2 updates of the state, therefore Movie is painted twice
-    this.setState({
-      alreadySuggested
-    });
-
-    this.chooseSuggestion();
-    // This block triggers 2 updates of the state, therefore Movie is painted twice - END
   };
 
   rewind = () => {
-    const suggestions = this.state.suggestions;
-    const currentSuggestion = this.state.currentSuggestion;
-    const alreadySuggested = this.state.alreadySuggested;
-
-    if (!alreadySuggested.length > 0) {
-      return false;
-    }
-
-    const previousSuggestion = alreadySuggested.splice(
-      [alreadySuggested.length - 1],
-      1
-    )[0];
-
-    // Add current suggestion back to suggestions
-    suggestions.push(currentSuggestion);
-
-    // Remove previous opinion from suggestion
-    delete previousSuggestion.opinion;
+    const { suggestions, currentSuggestion, alreadySuggested } = this.state;
+    const rewound = rewindHelper(
+      suggestions,
+      currentSuggestion,
+      alreadySuggested
+    );
 
     // Move suggestion from rewindMemory to currentSuggestion
     // Update suggestions and alreadySuggested
     this.setState({
-      currentSuggestion: previousSuggestion,
-      suggestions: suggestions,
-      alreadySuggested: alreadySuggested
+      ...rewound
     });
   };
 
@@ -170,13 +89,15 @@ class Suggestions extends React.Component {
   };
 
   componentDidMount() {
-    this.requestAll()
+    this.requestMovies(100)
       .then(responses => {
         this.addResultsToState(responses);
-        this.chooseSuggestion();
+
+        const foundSuggestion = findSuggestion(this.state.suggestions);
 
         this.setState({
-          isLoaded: true
+          isLoaded: true,
+          ...foundSuggestion
         });
       })
       .catch(error => {
